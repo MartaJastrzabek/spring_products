@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj produkt</title>
+</head>
+<body>
+<h1>Aby dodać nowy produkt podaj dane: </h1>
+<form action="/add" method="get">
+    <label for="name">Nazwa:</label>
+    <input type="text" name="name" placeholder="nazwa" id="name"></br>
+    <label for="price">Cena:</label>
+    <input type="text" name="price" placeholder="cena" id="price"></br>
+    <label for="category">Kategoria:</label>
+    <select name="category" id="category">
+        <option value="GROCERY">spożywcze</option>
+        <option value="DOMESTIC">domowe</option>
+        <option value="OTHER">inne</option>
+    </select></br>
+    <input type="submit" value="Dodaj!">
+</form>
+
+</body>
+</html>
