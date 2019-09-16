@@ -17,28 +17,24 @@ public class ProductsRepository {
         productsList.add(new Product(name, price, category));
     }
 
-    public String printProductsList(ProductCategory category) {
-        String productsToString = "";
-        for (Product p : productsList) {
-            if (category == ProductCategory.ALL) {
-                productsToString += p.toString() + "</br>";
-            } else if (p.getCategory() == category) {
-                productsToString += p.toString() + "</br>";
-            }
-        }
-        countPriceSum(category);
-
-        return productsToString + "</br>" + "Suma cen produktów: " + countPriceSum(category);
+    public List<Product> getProductsList() {
+        return productsList;
     }
 
-    private BigDecimal countPriceSum(ProductCategory category) {
-        BigDecimal sum = new BigDecimal("0");
+    public List<Product> getProductsList(ProductCategory category) {
+        List<Product> productsFromCategory = new ArrayList<>();
         for (Product p : productsList) {
-            if (category == ProductCategory.ALL) {
-                sum = sum.add(p.getPrice());
-            } else if (p.getCategory() == category) {
-                sum = sum.add(p.getPrice());
+            if (p.getCategory() == category) {
+                productsFromCategory.add(p);
             }
+        }
+        return productsFromCategory;
+    }
+
+    public BigDecimal countPriceSum(List<Product> products) {
+        BigDecimal sum = new BigDecimal("0");
+        for (Product p : products) {
+            sum = sum.add(p.getPrice());
         }
         return sum;
     }
